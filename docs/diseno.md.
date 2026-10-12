@@ -1,0 +1,12 @@
+| Proceso de nivel 1 | En una oración | Cohesión | Decisión de diseño |
+|A|---|---|---|
+|1. Gestionar socios |Registra nuevos socios, actualiza sus datosy consulta su información | Comunicacional|Se divide en Registrar socio, Actualizar datos del socio y Consultar socio, porque son operaciones distintas que utilizan los mismos datos de socios.|
+|2. Gestionar membresias |Registra las membresias y consulta su vigencia |Comunicacional |Se divide en Registrar membresía y Consultar vigencia, para que cada módulo tenga una tarea específica. |
+|3. Gestionar Pagos |Registra los pagos de socios y consulta sus pagos anteriores |Comunicacional |Se divide en Registrar pago y Consultar historial de pagos, porque cada operación tiene un propósito distinto. |
+|4. Controlar asistencias |Registra la entrada de los socios al gimnacio |Funcional |Se queda como está, porque realiza una sola tarea claramente definida. |
+
+| Entre | Qué comparten | Acoplamiento | Decisión de diseño |
+|A|---|---|---|
+|Registro socio->Registrar membreisa |Número de socio y nombre |De datos |Se pasan únicamente el identificador del socio y los datos necesarios para registrar la membresía, sin enviar todo el registro del socio. |
+|registrar membresia-> Registro pago |Identificador del socio, identificador de mebresias e importe a pagar |De datos |El módulo de pagos recibe únicamente los datos necesarios para registrar el pago. |
+|Gestionar socias <-> Gestionar membresias |Ambos modifican el almacen |Común |Gestionar socios será el único módulo responsable de modificar el almacén Socios. Gestionar membresías solicitará los datos necesarios a ese módulo, sin modificar el almacén por su cuenta.|
